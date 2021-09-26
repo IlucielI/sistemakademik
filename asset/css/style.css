@@ -1,0 +1,435 @@
+.js-fxm-custom-modal .modal-dialog .modal-content {
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
+
+.js-fxm-custom-modal .modal-dialog .modal-content .modal-header {
+  border-bottom: none;
+  height: 40px;
+}
+
+.js-fxm-custom-modal .modal-dialog .modal-content .modal-header .close {
+  font-size: 36px;
+  opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+  .js-fxm-custom-modal.modal-large .modal-dialog {
+    width: 675px;
+  }
+  .js-fxm-custom-modal.modal-medium .modal-dialog {
+    width: 480px;
+  }
+  .js-fxm-custom-modal.modal-small .modal-dialog {
+    width: 340px;
+  }
+}
+
+@media (min-width: 992px) {
+  .js-fxm-custom-modal.modal-large .modal-dialog {
+    width: 810px;
+  }
+  .js-fxm-custom-modal.modal-medium .modal-dialog {
+    width: 540px;
+  }
+  .js-fxm-custom-modal.modal-small .modal-dialog {
+    width: 360px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .js-fxm-custom-modal.modal-large .modal-dialog {
+    width: 900px;
+  }
+  .js-fxm-custom-modal.modal-medium .modal-dialog {
+    width: 600px;
+  }
+  .js-fxm-custom-modal.modal-small .modal-dialog {
+    width: 400px;
+  }
+}
+
+.is-mobile,
+.is-tablet,
+.is-desktop {
+  float: left;
+}
+
+@media only screen and (min-width: 992px) {
+  .is-desktop {
+    display: block;
+  }
+  .is-mobile,
+  .is-tablet {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .is-tablet {
+    display: block;
+  }
+  .is-mobile,
+  .is-desktop {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  .is-mobile {
+    display: block;
+  }
+  .is-tablet,
+  .is-desktop {
+    display: none;
+  }
+}
+
+body {
+  font-size: 16px;
+}
+
+.owl-carousel .owl-item {
+  -webkit-backface-visibility: visible;
+}
+
+.owl-carousel .owl-item img {
+  -webkit-transform-style: flat;
+          transform-style: flat;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #00adef;
+}
+
+#Auth {
+  background-image: url("../image/Universitas-Gunadarma-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#Auth .container {
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  height: 100%;
+}
+
+#Auth .annotation-login {
+  color: purple;
+  text-align: center;
+}
+
+#Auth .annotation-login h1,
+#Auth .annotation-login h3 {
+  font-weight: 1000 !important;
+}
+
+@media screen and (max-width: 767px) {
+  #Auth .annotation-login h1 {
+    font-size: 2rem;
+  }
+  #Auth .annotation-login h3 {
+    font-size: 1.25rem;
+  }
+}
+
+#Auth .form-login {
+  background-color: rgba(199, 203, 208, 0.8);
+  border-radius: 4vh;
+}
+
+#Auth .form-login h1 {
+  text-align: center;
+  margin-top: 14vh;
+  margin-bottom: 14vh;
+  font-weight: 1000 !important;
+}
+
+#Auth .form-login form {
+  margin-bottom: 16vh;
+}
+
+#Auth .form-login .form-group {
+  position: relative;
+}
+
+#Auth .form-login .form-group .icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  margin: 6px 12px;
+}
+
+#Auth .form-login button {
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  #Auth .form-login {
+    width: 60vh;
+  }
+}
+
+#home {
+  background-image: url("../image/imgbg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#founderSpeech {
+  background-image: url("../image/imgbg6.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#hrQnA {
+  background-image: url("../image/imgbg1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#whoIsFXM {
+  background-image: url("../image/imgbg4.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#whatWeDo {
+  background-image: url("../image/imgbg3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#hrGames {
+  background-image: url("../image/imgbg2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#sidebar {
+  position: absolute;
+  right: 0;
+  background-color: #00adef;
+  width: 350px;
+  height: 95vh;
+  z-index: 99;
+  padding: 70px 30px;
+}
+
+#sidebar .nav-item a {
+  color: white;
+}
+
+#sidebar .nav-item a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#sidebar .nav-item.active a,
+#sidebar .nav-item.active a:hover {
+  color: darkslategrey;
+}
+
+#sidebar button {
+  color: #00adef;
+}
+
+.fa-bars,
+.fa-times {
+  cursor: pointer;
+}
+
+.content .container {
+  min-height: 94.38vh;
+  position: relative;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+  height: 100%;
+}
+
+@media screen and (max-width: 575px) {
+  .content .container .row {
+    padding: 0 15px;
+  }
+}
+
+.content .container .avatar {
+  background-image: url("../image/Mascot_Gif_02.gif");
+  width: 300px;
+  height: 234px;
+  background-repeat: no-repeat;
+  position: absolute;
+  background-size: contain;
+  bottom: 0;
+  z-index: 10;
+  margin: 0 -15px;
+}
+
+.content .container .avatar .annotation {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+  text-align: left;
+  left: 200px;
+  top: -90px;
+  width: 345px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px 30px;
+  border-radius: 2vh;
+}
+
+.content .container .avatar .button-avatar {
+  background-color: #00adef;
+  color: white;
+}
+
+.content .container .avatar .button-avatar:hover {
+  color: wheat;
+}
+
+@media screen and (max-width: 991px) {
+  .content .container .avatar {
+    width: 280px;
+    height: 214px;
+  }
+  .content .container .avatar .annotation {
+    width: 315px;
+    padding: 16px 26px;
+    left: 180px;
+    top: -80px;
+  }
+  .content .container .avatar .annotation h5 {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .content .container .avatar {
+    width: 260px;
+    height: 194px;
+  }
+  .content .container .avatar .annotation {
+    width: 285px;
+    left: 160px;
+    top: -45px;
+    padding: 12px 22px;
+  }
+  .content .container .avatar .annotation h5 {
+    font-size: 0.9rem;
+  }
+  .content .container .avatar .annotation button {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .content .container .avatar {
+    width: 240px;
+    height: 174px;
+    margin: 0;
+  }
+  .content .container .avatar .annotation {
+    left: 140px;
+    width: 220px;
+    top: -60px;
+    padding: 10px 20px;
+  }
+  .content .container .avatar .annotation h5 {
+    font-size: 0.8rem;
+  }
+  .content .container .avatar .annotation button {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .content .container .avatar {
+    width: 220px;
+    height: 154px;
+  }
+  .content .container .avatar .annotation {
+    padding: 5px 10px;
+    top: -30px;
+    left: 125px;
+  }
+  .content .container .avatar .annotation h5 {
+    font-size: 0.7rem;
+  }
+  .content .container .avatar .annotation button {
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 365px) {
+  .content .container .avatar {
+    width: 180px;
+    height: 124px;
+  }
+  .content .container .avatar .annotation {
+    top: -40px;
+    left: 95px;
+  }
+  .content .container .avatar h5 {
+    font-size: 0.6rem;
+  }
+  .content .container .avatar button {
+    font-size: 0.5rem;
+  }
+}
+
+.content .container .video {
+  margin-top: 2vh;
+}
+
+.content .container .video video {
+  pointer-events: none;
+  max-width: 900px;
+  min-width: 0px;
+}
+
+.content .container .video video:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 991px) {
+  .content .container .video {
+    margin-top: 5vh;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .content .container .video {
+    margin-top: 12vh;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .content .container .video {
+    padding: 0 10px;
+    margin-top: 14vh;
+  }
+}
+
+.table td {
+  vertical-align: middle !important;
+}
+
+.footer {
+  left: 0;
+  font-size: 14px;
+  bottom: 0;
+  width: 100%;
+  background-color: #00adef;
+}
+
+@media screen and (max-width: 575px) {
+  .footer .row {
+    padding: 0 15px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

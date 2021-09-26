@@ -1,0 +1,300 @@
+@import "part/mixins";
+@import "part/fx-utils";
+@import "part/fonts";
+@import "part/variables";
+@import "part/base";
+@import "part/layout";
+@import "part/modules";
+@import "part/global-style";
+@import "part/custom-bootstrap";
+@import "part/custom-plugins";
+
+body {
+	font-family: "Poppins", sans-serif;
+	background-color: #00adef;
+}
+
+#Auth {
+	background-image: url("../image/Universitas-Gunadarma-2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	.container {
+		padding-top: 5vh;
+		padding-bottom: 5vh;
+		height: 100%;
+	}
+	.annotation-login {
+		color: purple;
+		text-align: center;
+		h1,
+		h3 {
+			font-weight: 1000 !important;
+		}
+		@media screen and (max-width: 767px) {
+			h1 {
+				font-size: 2rem;
+			}
+			h3 {
+				font-size: 1.25rem;
+			}
+		}
+	}
+	.form-login {
+		background-color: rgba(199, 203, 208, 0.8);
+		border-radius: 4vh;
+		h1 {
+			text-align: center;
+			margin-top: 14vh;
+			margin-bottom: 14vh;
+			font-weight: 1000 !important;
+		}
+		form {
+			margin-bottom: 16vh;
+		}
+		.form-group {
+			position: relative;
+			.icon {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 20px;
+				margin: 6px 12px;
+			}
+		}
+		button {
+			border-radius: 1rem;
+		}
+		@media screen and (max-width: 767px) {
+			width: 60vh;
+		}
+	}
+}
+
+#home {
+	background-image: url("../image/imgbg1.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#founderSpeech {
+	background-image: url("../image/imgbg6.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#hrQnA {
+	background-image: url("../image/imgbg1.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#whoIsFXM {
+	background-image: url("../image/imgbg4.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#whatWeDo {
+	background-image: url("../image/imgbg3.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#hrGames {
+	background-image: url("../image/imgbg2.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#sidebar {
+	position: absolute;
+	right: 0;
+	background-color: #00adef;
+	width: 350px;
+	height: 95vh;
+	z-index: 99;
+	padding: 70px 30px;
+
+	.nav-item {
+		a {
+			color: rgba(255, 255, 255, 1);
+			&:hover {
+				color: rgba(255, 255, 255, 0.7);
+			}
+		}
+		&.active {
+			a,
+			a:hover {
+				color: darkslategrey;
+			}
+		}
+	}
+	button {
+		color: #00adef;
+	}
+}
+
+.fa-bars,
+.fa-times {
+	cursor: pointer;
+}
+
+.content {
+	.container {
+		min-height: 94.38vh;
+		position: relative;
+		padding-top: 5vh;
+		padding-bottom: 5vh;
+		height: 100%;
+		.row {
+			@media screen and (max-width: 575px) {
+				padding: 0 15px;
+			}
+		}
+		.avatar {
+			background-image: url("../image/Mascot_Gif_02.gif");
+			width: 300px;
+			height: 234px;
+			background-repeat: no-repeat;
+			position: absolute;
+			background-size: contain;
+			bottom: 0;
+			z-index: 10;
+			margin: 0 -15px;
+			.annotation {
+				position: absolute;
+				background-color: rgba(255, 255, 255, 0.6);
+				color: black;
+				text-align: left;
+				left: 200px;
+				top: -90px;
+				width: 345px;
+				height: fit-content;
+				padding: 20px 30px;
+				border-radius: 2vh;
+			}
+			.button-avatar {
+				background-color: #00adef;
+				color: white;
+				&:hover {
+					color: wheat;
+				}
+			}
+			@media screen and (max-width: 991px) {
+				width: 280px;
+				height: 214px;
+				.annotation {
+					width: 315px;
+					padding: 16px 26px;
+					left: 180px;
+					top: -80px;
+					h5 {
+						font-size: 1.1rem;
+					}
+				}
+			}
+			@media screen and (max-width: 767px) {
+				width: 260px;
+				height: 194px;
+				.annotation {
+					width: 285px;
+					left: 160px;
+					top: -45px;
+					padding: 12px 22px;
+					h5 {
+						font-size: 0.9rem;
+					}
+					button {
+						font-size: 0.8rem;
+					}
+				}
+			}
+			@media screen and (max-width: 575px) {
+				width: 240px;
+				height: 174px;
+				margin: 0;
+				.annotation {
+					left: 140px;
+					width: 220px;
+					top: -60px;
+					padding: 10px 20px;
+					h5 {
+						font-size: 0.8rem;
+					}
+					button {
+						font-size: 0.7rem;
+					}
+				}
+			}
+			@media screen and (max-width: 380px) {
+				width: 220px;
+				height: 154px;
+				.annotation {
+					padding: 5px 10px;
+					top: -30px;
+					left: 125px;
+					h5 {
+						font-size: 0.7rem;
+					}
+					button {
+						font-size: 0.6rem;
+					}
+				}
+			}
+			@media screen and (max-width: 365px) {
+				width: 180px;
+				height: 124px;
+				.annotation {
+					top: -40px;
+					left: 95px;
+				}
+				h5 {
+					font-size: 0.6rem;
+				}
+				button {
+					font-size: 0.5rem;
+				}
+			}
+		}
+		.video {
+			margin-top: 2vh;
+			video {
+				pointer-events: none;
+				max-width: 900px;
+				min-width: 0px;
+				&:focus {
+					outline: none;
+				}
+			}
+			@media screen and (max-width: 991px) {
+				margin-top: 5vh;
+			}
+			@media screen and (max-width: 767px) {
+				margin-top: 12vh;
+			}
+			@media screen and (max-width: 575px) {
+				padding: 0 10px;
+				margin-top: 14vh;
+			}
+		}
+	}
+}
+
+.table td {
+	vertical-align: middle !important;
+}
+
+.footer {
+	// padding-top: 1.3vh;
+	// padding-bottom: 1.2vh;
+	left: 0;
+	font-size: 14px;
+	bottom: 0;
+	width: 100%;
+	background-color: #00adef;
+	.row {
+		@media screen and (max-width: 575px) {
+			padding: 0 15px;
+		}
+	}
+}
