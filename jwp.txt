@@ -1,0 +1,7 @@
+https://balsamiq.cloud/sggq87l/pvtou4q/r2278
+
+https://app.diagrams.net/#G14FzvOifcp5cEQdIeO1HxC9HjNBTJxFDE
+
+
+		$str = intval(00000003);
+		echo str_pad($str + 1, 8, '0', STR_PAD_LEFT);
