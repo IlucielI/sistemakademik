@@ -50,4 +50,18 @@ class BackEnd_Model extends CI_Model
 	{
 		$this->db->delete('matakuliah', array('kode_mk' => $kode_mk));
 	}
+
+	public function getCountSKS($npm)
+	{
+		$this->db->select_sum('total_sks');
+		$this->db->where('npm', $npm);
+		$this->db->from('krs');
+		return $this->db->count_all_results();
+	}
+
+	public function getCountMatakuliah()
+	{
+		$this->db->from('matakuliah');
+		return $this->db->count_all_results();
+	}
 }

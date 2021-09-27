@@ -15,7 +15,8 @@ class Akademik extends CI_Controller
 		$data = array(
 			'title' => 'Dashboard',
 			'countMahasiswa' => $this->User_Model->getCountUser("mahasiswa"),
-			'countSKS' => $this->BackEnd_Model->getCountSKS($this->session->userdata('username')),
+			'countMatakuliah' => $this->BackEnd_Model->getCountMatakuliah(),
+			'countSKS' => $this->BackEnd_Model->getCountSKS($this->session->userdata('npm')),
 		);
 		$this->load->view('Backend/templete', $data);
 		$this->load->view('Backend/dashboard', $data);
@@ -216,10 +217,44 @@ class Akademik extends CI_Controller
 		$this->session->set_flashdata('flash', 'Mata Kuliah Updated!');
 		redirect('Akademik/showMatakuliah');
 	}
+
 	public function deleteMatakuliah()
 	{
 		$this->BackEnd_Model->deleteMatakuliah($this->input->post('id'));
 		$this->session->set_flashdata('flash', 'Mata Kuliah Deleted!');
 		redirect('Akademik/showMatakuliah');
+	}
+
+	public function editProfile()
+	{
+		$data = [
+			'title' => 'Update Profile',
+		];
+		$this->load->view('Backend/templete', $data);
+		$this->load->view('Backend/Manage/Profile/editProfile', $data);
+	}
+
+	public function updateProfile()
+	{
+
+		if ($this->input->post('new_password1') != $this->input->post('new_password2')) {
+			$this->session->set_flashdata('flash', 'Konfirmasi password Baru tidak sesuai!');
+			redirect('Akademik/editProfile');
+		}
+		$user =	$this->User_Model->getUser($this->input->post('username'));
+		if (!empty($user)) {
+			if ($this->input->post('current_password') == $user['password']) {
+				$data = [
+					"password" => $this->input->post('new_password2'),
+				];
+				$this->User_Model->updateUser($data, $this->input->post('id'));
+				$this->session->sess_destroy();
+				$this->session->set_flashdata('flash', 'Password Berhasil Di Update');
+				redirect('Auth/signOut');
+			} else {
+				$this->session->set_flashdata('flash', 'Password Lama Salah');
+				redirect('Akademik/editProfile');
+			}
+		}
 	}
 }

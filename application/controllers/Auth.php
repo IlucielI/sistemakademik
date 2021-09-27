@@ -36,10 +36,12 @@ class Auth extends CI_Controller
 				if ($password == $user['password']) {
 					$data = [
 						'username' => $user['username'],
+						'user_id' => $user['id'],
 						'role' => $user['role'],
 					];
 					if ($user['role'] == "mahasiswa") {
 						$data['nama'] = $mahasiswa['nama'];
+						$data['npm'] = $mahasiswa['npm'];
 					}
 					$this->session->set_userdata($data);
 					redirect('Akademik');

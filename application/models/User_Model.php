@@ -75,4 +75,11 @@ class User_Model extends CI_Model
 		$this->db->where('user_id', $user_id);
 		$this->db->update('mahasiswa', $data);
 	}
+
+	public function getCountUser($role)
+	{
+		$this->db->where('role', $role);
+		$this->db->from('user');
+		return $this->db->count_all_results();
+	}
 }
