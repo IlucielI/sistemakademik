@@ -1,14 +1,13 @@
 				<div class="container-fluid">
 					<div class="container w-75 text-dark mt-5">
-						<form action="<?= base_url('Akademik/updateUser') ?>" method="POST">
-							<input type="hidden" name="id" value="<?= $user['id']; ?>">
+						<form action="<?= base_url('Akademik/insertMatakuliah') ?>" method="POST">
 							<div class="form-group">
 								<div class="row">
 									<div class="col-md-4">
-										<label for="npm">Npm</label>
+										<label for="kode_mk">Kode mk</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" readonly class="form-control" id="npm" name="npm" placeholder="npm" required="" value="<?= $mahasiswa['npm'] ?>">
+										<input type="text" class="form-control" id="kode_mk" name="kode_mk" placeholder="kode_mk" required="">
 									</div>
 								</div>
 							</div>
@@ -18,27 +17,17 @@
 										<label for="nama">Nama</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" class="form-control" id="nama" name="nama" placeholder="nama" required="" value="<?= $mahasiswa['nama'] ?>">
+										<input type="text" class="form-control" id="nama" name="nama" placeholder="nama" required="">
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="row">
 									<div class="col-md-4">
-										<label for="kelas">Kelas</label>
+										<label for="sks">SKS</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" class="form-control" id="kelas" name="kelas" placeholder="kelas" required="" value="<?= $mahasiswa['kelas'] ?>">
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="row">
-									<div class="col-md-4">
-										<label for="email">Email</label>
-									</div>
-									<div class="col-md-8">
-										<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="" value="<?= $user['email'] ?>">
+										<input type="number" class="form-control" id="sks" name="sks" placeholder="sks" required="">
 									</div>
 								</div>
 							</div>
@@ -48,7 +37,7 @@
 										<label for="semester">Semester</label>
 									</div>
 									<div class="col-md-8">
-										<input type="text" class="form-control" id="semester" name="semester" placeholder="semester saat ini" required="" value="<?= $mahasiswa['semester'] ?>">
+										<input type="text" class="form-control" id="semester" name="semester" placeholder="semester saat ini" required="">
 									</div>
 								</div>
 							</div>
@@ -61,7 +50,7 @@
 										<select class="form-control" id="fakultas" name="fakultas_id" required>
 											<option value="">Pilih</option>
 											<?php foreach ($fakultas as $f) : ?>
-												<option value="<?= $f['id'] ?>" <?php if ($f['id'] == $fakultasMhs['id']) echo 'selected' ?>><?= $f['nama'] ?></option>
+												<option value="<?= $f['id'] ?>"><?= $f['nama'] ?></option>
 											<?php endforeach; ?>
 										</select>
 									</div>
@@ -74,36 +63,14 @@
 									</div>
 									<div class="col-md-8">
 										<select class="form-control" id="jurusan" name="jurusan_id" required>
-											<?php foreach ($jurusan as $j) : ?>
-												<option value="<?= $j['id'] ?>" <?php if ($j['id'] == $mahasiswa['jurusan_id']) echo 'selected' ?>><?= $j['nama'] ?></option>
-											<?php endforeach; ?>
+											<option value="">Pilih</option>
 										</select>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="row">
-									<div class="col-md-4">
-										<label for="username">Username</label>
-									</div>
-									<div class="col-md-8">
-										<input type="text" class="form-control" id="username" name="username" placeholder="username" required="" value="<?= $user['username'] ?>">
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="row">
-									<div class="col-md-4">
-										<label for="password">Password</label>
-									</div>
-									<div class="col-md-8">
-										<input type="text" class="form-control" id="password" name="password" placeholder="password" required="" value="<?= $user['password'] ?>">
 									</div>
 								</div>
 							</div>
 							<div class="row d-flex justify-content-center">
 								<div class="col-md-4">
-									<button type="submit" class="btn btn-warning w-75">Update</button>
+									<button type="submit" class="btn btn-warning w-75">Tambah</button>
 								</div>
 							</div>
 						</form>
@@ -137,7 +104,6 @@
 
 				<!-- Custom scripts for all pages-->
 				<script src="<?= base_url('asset/plugins/sbAdmin2/') ?>js/sb-admin-2.min.js"></script>
-
 
 				<script type="text/javascript">
 					$(document).ready(function() {

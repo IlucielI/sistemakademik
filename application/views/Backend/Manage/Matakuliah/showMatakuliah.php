@@ -1,27 +1,39 @@
 				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<a href="<?= base_url('Akademik/addMatakuliah') ?>">
+								<button type="button" class="btn btn-primary my-3">Tambah Mata Kuliah</button>
+							</a>
+						</div>
+					</div>
 					<table class="table table-hover table-dark text-center w-100" id="table_id">
 						<thead>
 							<tr>
 								<th scope="col">No</th>
-								<th scope="col">Page</th>
-								<th scope="col">Video</th>
+								<th scope="col">Kode MK</th>
+								<th scope="col">Nama</th>
+								<th scope="col">Jurusan</th>
+								<th scope="col">SKS</th>
+								<th scope="col">Semester</th>
 								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php $i = 1;
-							foreach ($portfolio as $port) : ?>
+							foreach ($matakuliah as $matakuliah) : ?>
 								<tr>
 									<td scope="row"><?= $i++ ?></td>
-									<td><?= $port["portfolio_page"]; ?></td>
-									<td><video width="320px" height="auto" controls style="pointer-events: auto;">
-											<source src="<?= base_url('asset/video/' . $port['portfolio_file'])  ?>" type="video/mp4">
-										</video></td>
+									<td><?= $matakuliah["kode_mk"]; ?></td>
+									<td><?= $matakuliah["nama"]; ?></td>
+									<td><?= $matakuliah["jurusan"]; ?></td>
+									<td><?= $matakuliah["sks"]; ?></td>
+									<td><?= $matakuliah["semester"]; ?></td>
 									<td>
-										<form action="<?= base_url('Admin/editPortfolio') ?>" method="POST">
-											<input type="hidden" name="portfolio_id" value="<?= $port['portfolio_id']; ?>">
-											<button type="submit" class="btn btn-warning">Update</button>
+										<form action="<?= base_url('Akademik/editMatakuliah') ?>" method="POST" style="display: inline;">
+											<input type="hidden" name="kode_mk" value="<?= $matakuliah['kode_mk']; ?>">
+											<button type="submit" class="btn btn-warning d-inline">Edit</button>
 										</form>
+										<button type="button" class="btn btn-danger btn-delete d-inline" data-toggle="modal" data-target="#deleteBackdrop" data-id="<?= $matakuliah['kode_mk']; ?>" data-username="<?= $matakuliah["nama"]; ?>">Delete</button>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -30,7 +42,27 @@
 					<!-- Button trigger modal -->
 
 					<!-- Modal -->
-
+					<div class="modal fade" id="deleteBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="deleteBackdropLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title text-danger" id="deleteBackdropLabel">Delete Mata Kuliah</h5>
+								</div>
+								<div class="modal-body text-center">
+									<h4 class="text-warning">Are You Sure ?</h4>
+									<h6 class="text-danger">Delete Mata Kuliah</h6>
+									<h2 class="text-primary" id="usernameDelete"></h2>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+									<form action="<?= base_url('Akademik/deleteMatakuliah') ?>" method="POST">
+										<input type="hidden" name="id" id="id">
+										<button type="submit" class="btn btn-danger">Delete</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				</div>
 
@@ -50,6 +82,7 @@
 
 				</div>
 				<!-- End of Page Wrapper -->
+
 				<div class="mt-2 mr-3 d-none alert alert-dismissible fade show position-absolute" role="alert" style="background-color:#00adef;top:0; right:0;height:fit-content;max-width:50vh; min-width:40vh">
 					<h5 class="text-light"></h5>
 					<button type="button" class="close ml-2" data-dismiss="alert" aria-label="Close">
@@ -74,7 +107,12 @@
 						$('#table_id').DataTable({
 							scrollX: true,
 							scrollCollapse: true,
-							autoWidth: true
+							autoWidth: true,
+							paging: true,
+						});
+						$(".btn-delete").click(function() {
+							$("#deleteBackdrop #id").attr('value', $(this).data('id'));
+							$("#usernameDelete").html($(this).data('username'))
 						});
 					});
 				</script>
@@ -87,6 +125,7 @@
 						}, 4500);
 					</script>
 				<?php endif; ?>
+
 				</body>
 
 				</html>

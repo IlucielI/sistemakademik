@@ -34,14 +34,14 @@
 		<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #00adef;">
 			<!-- Sidebar - Brand -->
 			<div class="d-flex justify-content-center my-3">
-				<a class="navbar-brand my-1 p-0 mr-0" href="<?= base_url("/Admin") ?>"><img src="<?= base_url('asset/image/logo.png') ?>"></a>
+				<a class="navbar-brand my-1 p-0 mr-0" href="<?= base_url("Akademik") ?>"><img src="<?= base_url('asset/image/logo.png') ?>"></a>
 			</div>
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item <?php if ($this->uri->segment(2) == null) echo 'active' ?>">
-				<a class="nav-link" href="<?= base_url('Admin') ?>">
+				<a class="nav-link" href="<?= base_url('Akademik') ?>">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Dashboard</span></a>
 			</li>
@@ -49,19 +49,18 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item <?php if ($this->uri->segment(2) != null) echo 'active' ?>">
-				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+			<li class="nav-item <?php if ($this->uri->segment(2) == 'showUser' or $this->uri->segment(2) == 'editUser' or $this->uri->segment(2) == 'addUser') echo 'active' ?>">
+				<a class="nav-link" href="<?= base_url('Akademik/showUser') ?>">
 					<i class="fas fa-fw fa-cog"></i>
-					<span>Manage</span>
-				</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item <?php if ($this->uri->segment(2) == 'showUser' or $this->uri->segment(2) == 'editUser') echo 'bg-info text-light' ?>" href="<?= base_url('Admin/showUser') ?>">User</a>
-						<a class="collapse-item <?php if ($this->uri->segment(2) == 'showPortfolio' or $this->uri->segment(2) == 'editPortfolio') echo 'bg-info text-light' ?>" href="<?= base_url('Admin/showPortfolio') ?>">Portfolio</a>
-						<a class="collapse-item <?php if ($this->uri->segment(2) == 'showLink' or $this->uri->segment(2) == 'editLink') echo 'bg-info text-light' ?>" href="<?= base_url('Admin/showLink') ?>">Link Conference</a>
-					</div>
-				</div>
+					<span>Data Mahasiswa</span></a>
+			</li>
+
+			<hr class="sidebar-divider">
+
+			<li class="nav-item <?php if ($this->uri->segment(2) == 'showMatakuliah' or $this->uri->segment(2) == 'editMatakuliah' or $this->uri->segment(2) == 'addMatakuliah') echo 'active' ?>">
+				<a class="nav-link" href="<?= base_url('Akademik/showMatakuliah') ?>">
+					<i class="fas fa-fw fa-cog"></i>
+					<span>Data Mata Kuliah</span></a>
 			</li>
 
 			<!-- Divider -->
@@ -103,6 +102,10 @@
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+								<a class="dropdown-item" href="<?= base_url('Akademik/editProfile') ?>">
+									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+									Edit Profile
+								</a>
 								<a class="dropdown-item" href="<?= base_url('Auth/signOut') ?>">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 									Sign Out

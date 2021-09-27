@@ -1,6 +1,6 @@
 				<div class="container-fluid">
 					<div class="container w-75 text-dark mt-5">
-						<form action="<?= base_url('Admin/insertUser') ?>" method="POST">
+						<form action="<?= base_url('Akademik/insertUser') ?>" method="POST">
 							<div class="form-group">
 								<div class="row">
 									<div class="col-md-4">
@@ -44,14 +44,47 @@
 							<div class="form-group">
 								<div class="row">
 									<div class="col-md-4">
-										<label for="jurusan">Jurusan</label>
+										<label for="fakultas">fakultas</label>
+									</div>
+									<div class="col-md-8">
+										<select class="form-control" id="fakultas" name="fakultas_id" required>
+											<option value="">Pilih</option>
+											<?php foreach ($fakultas as $f) : ?>
+												<option value="<?= $f['id'] ?>"><?= $f['nama'] ?></option>
+											<?php endforeach; ?>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-md-4">
+										<label for="jurusan">jurusan</label>
 									</div>
 									<div class="col-md-8">
 										<select class="form-control" id="jurusan" name="jurusan_id" required>
-											<option value="1">Admin</option>
-											<option value="2">Employee</option>
-											<option value="3">Internship</option>
+											<option value="">Pilih</option>
 										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-md-4">
+										<label for="username">Username</label>
+									</div>
+									<div class="col-md-8">
+										<input type="text" class="form-control" id="username" name="username" placeholder="username" required="">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<div class="col-md-4">
+										<label for="password">Password</label>
+									</div>
+									<div class="col-md-8">
+										<input type="text" class="form-control" id="password" name="password" placeholder="password" required="">
 									</div>
 								</div>
 							</div>
@@ -91,6 +124,30 @@
 
 				<!-- Custom scripts for all pages-->
 				<script src="<?= base_url('asset/plugins/sbAdmin2/') ?>js/sb-admin-2.min.js"></script>
+
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$('#fakultas').change(function() {
+							var id = $(this).val();
+							$.ajax({
+								url: "<?php echo base_url(); ?>akademik/ajax_jurusan",
+								method: "POST",
+								data: {
+									id: id
+								},
+								dataType: 'json',
+								success: function(data) {
+									var html = '';
+									var i;
+									for (i = 0; i < data.length; i++) {
+										html += '<option value="' + data[i].id + '">' + data[i].nama + '</option>';
+									}
+									$('#jurusan').html(html);
+								}
+							});
+						});
+					});
+				</script>
 
 				</body>
 

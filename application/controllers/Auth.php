@@ -13,11 +13,7 @@ class Auth extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('role')) {
-			if ($this->session->userdata('role') > 1) {
-				redirect('Home');
-			} else {
-				redirect('Admin');
-			}
+			redirect('Akademik');
 		}
 		$this->load->view('Auth/signIn');
 	}
@@ -46,7 +42,7 @@ class Auth extends CI_Controller
 						$data['nama'] = $mahasiswa['nama'];
 					}
 					$this->session->set_userdata($data);
-					redirect('Admin');
+					redirect('Akademik');
 				} else {
 					$this->session->set_flashdata('flash', 'Wrong Password!');
 					redirect('/');

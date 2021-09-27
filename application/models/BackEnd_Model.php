@@ -2,40 +2,52 @@
 
 class BackEnd_Model extends CI_Model
 {
-	public function getPortfolio($portfolio_id = false)
+	public function getFakultas($id = false)
 	{
-		if ($portfolio_id == false) {
-			return $this->db->get('portfolio')->result_array();
+		if ($id == false) {
+			return $this->db->get('fakultas')->result_array();
 		}
-		return $this->db->get_where('portfolio', ['portfolio_id' => $portfolio_id])->row_array();
-	}
-	public function updatePortfolio($data, $id)
-	{
-		$this->db->set('portfolio_file', $data);
-		$this->db->where('portfolio_id', $id);
-		$this->db->update('portfolio');
+		return $this->db->get_where('fakultas', ['id' => $id])->row_array();
 	}
 
-	public function getLinkConf($link_id = false)
+	public function get_jurusan($id)
 	{
-		if ($link_id == false) {
-			return $this->db->get('link-conference')->result_array();
-		}
-		return $this->db->get_where('link-conference', ['link_id' => $link_id])->row_array();
-	}
-	public function updateLinkConf($data, $id)
-	{
-		$this->db->set('link', $data);
-		$this->db->where('link_id', $id);
-		$this->db->update('link-conference');
+		return $this->db->get_where('jurusan', ['fakultas_id' => $id])->result_array();
 	}
 
-	public function getCountSKS($npm)
+	public function getJurusan($id)
 	{
-		$this->db->where('npm', $npm);
-		$this->db->from('krs');
-		$this->db->select_sum('total_sks');
-		$this->db->group_by('npm');
-		return $this->db->get()->row_array();
+		$this->db->select('fakultas_id');
+		$this->db->from('jurusan');
+		$this->db->where('id', $id);
+		$jurusan = $this->db->get()->row_array();
+		return $jurusan['fakultas_id'];
+	}
+
+	public function getMatakuliah($kode_mk = false)
+	{
+		if ($kode_mk == false) {
+			$this->db->select('*, matakuliah.nama as nama ,jurusan.nama as jurusan');
+			$this->db->from('matakuliah');
+			$this->db->join('jurusan', 'matakuliah.jurusan_id = jurusan.id', 'LEFT');
+			return $this->db->get()->result_array();
+		}
+		return $this->db->get_where('matakuliah', ['kode_mk' => $kode_mk])->row_array();
+	}
+
+	public function insertMatakuliah($data)
+	{
+		$this->db->insert('matakuliah', $data);
+	}
+
+	public function updateMatakuliah($data, $kode_mk)
+	{
+		$this->db->where('kode_mk', $kode_mk);
+		$this->db->update('matakuliah', $data);
+	}
+
+	public function deleteMatakuliah($kode_mk)
+	{
+		$this->db->delete('matakuliah', array('kode_mk' => $kode_mk));
 	}
 }

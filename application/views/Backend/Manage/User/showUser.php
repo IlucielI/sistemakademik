@@ -1,41 +1,41 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col">
-							<a href="<?= base_url('Admin/addUser') ?>">
+							<a href="<?= base_url('Akademik/addUser') ?>">
 								<button type="button" class="btn btn-primary my-3">Tambah Mahasiswa</button>
 							</a>
 						</div>
-						<div class="col d-flex justify-content-end">
-							<button type="button" class="btn btn-info my-3" data-toggle="modal" data-target="#ActiveorEmailAllBackdrop">Active or Email All</button>
-						</div>
 					</div>
-					<table class="table table-hover table-dark text-center" id="table_id">
+					<table class="table table-hover table-dark text-center w-100" id="table_id">
 						<thead>
 							<tr>
 								<th scope="col">No</th>
-								<th scope="col">Username</th>
-								<th scope="col">Password</th>
-								<th scope="col">Email</th>
-								<th scope="col">Role</th>
+								<th scope="col">NPM</th>
+								<th scope="col">Nama</th>
+								<th scope="col">Kelas</th>
+								<th scope="col">Jurusan</th>
+								<th scope="col">Fakultas</th>
+								<th scope="col">Semester</th>
 								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php $i = 1;
-							foreach ($user as $user) : ?>
+							foreach ($mahasiswa as $mahasiswa) : ?>
 								<tr>
 									<td scope="row"><?= $i++ ?></td>
-									<td><?= $user["username"]; ?></td>
-									<td><?= $user["password"]; ?></td>
-									<td><?= $user["email"]; ?></td>
-									<td><?= $user["role"]; ?></td>
+									<td><?= $mahasiswa["npm"]; ?></td>
+									<td><?= $mahasiswa["nama"]; ?></td>
+									<td><?= $mahasiswa["kelas"]; ?></td>
+									<td><?= $mahasiswa["jurusan"]; ?></td>
+									<td><?= $mahasiswa["fakultas"]; ?></td>
+									<td><?= $mahasiswa["semester"]; ?></td>
 									<td>
-										<form action="<?= base_url('Admin/editUser') ?>" method="POST" style="display: inline;">
-											<input type="hidden" name="id" value="<?= $user['id']; ?>">
+										<form action="<?= base_url('Akademik/editUser') ?>" method="POST" style="display: inline;">
+											<input type="hidden" name="id" value="<?= $mahasiswa['user_id']; ?>">
 											<button type="submit" class="btn btn-warning d-inline">Edit</button>
 										</form>
-										<button type="button" class="btn btn-danger btn-delete d-inline" data-toggle="modal" data-target="#deleteBackdrop" data-id="<?= $user['id']; ?>" data-username="<?= $user["username"]; ?>">Delete</button>
-										<button type="button" class="btn btn-primary btn-resend mt-1" data-toggle="modal" data-target="#emailBackdrop" data-id="<?= $user['id']; ?>">Email</button>
+										<button type="button" class="btn btn-danger btn-delete d-inline" data-toggle="modal" data-target="#deleteBackdrop" data-id="<?= $mahasiswa['user_id']; ?>" data-username="<?= $mahasiswa["nama"]; ?>">Delete</button>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -52,68 +52,15 @@
 								</div>
 								<div class="modal-body text-center">
 									<h4 class="text-warning">Are You Sure ?</h4>
-									<h6 class="text-danger">Delete User</h6>
+									<h6 class="text-danger">Delete Mahasiswa</h6>
 									<h2 class="text-primary" id="usernameDelete"></h2>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-									<form action="<?= base_url('Admin/deleteUser') ?>" method="POST">
+									<form action="<?= base_url('Akademik/deleteUser') ?>" method="POST">
 										<input type="hidden" name="id" id="id">
 										<button type="submit" class="btn btn-danger">Delete</button>
 									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal fade" id="emailBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="emailBackdropLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title text-primary" id="emailBackdropLabel">Resend</h5>
-								</div>
-								<div class="modal-body">
-									<h4 class="text-center text-info">Resend Email ?</h4>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-									<form action="<?= base_url('Admin/resendEmail') ?>" method="POST">
-										<input type="hidden" name="id" id="id">
-										<button type="submit" class="btn btn-primary">Resend</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="modal fade" id="ActiveorEmailAllBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="ActiveorEmailAllBackdropLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title text-primary" id="ActiveorEmailAllBackdropLabel">Active or Email All</h5>
-								</div>
-								<div class="modal-body">
-									<div class="row">
-										<div class="col d-flex justify-content-center">
-											<form action="<?= base_url('Admin/is_active') ?>" method="POST">
-												<input type="hidden" name="is_active" id="is_active" value="1">
-												<button type="submit" class="btn btn-warning">Active All</button>
-											</form>
-										</div>
-										<div class="col d-flex justify-content-center">
-											<form action="<?= base_url('Admin/is_active') ?>" method="POST">
-												<input type="hidden" name="is_active" id="is_active" value="0">
-												<button type="submit" class="btn btn-danger">Non Active All</button>
-											</form>
-										</div>
-										<div class="col d-flex justify-content-center">
-											<form action="<?= base_url('Admin/resendEmailAll') ?>" method="POST">
-												<input type="hidden" name="emailAll" id="emailAll" value="true">
-												<button type="submit" class="btn btn-primary">Email All</button>
-											</form>
-										</div>
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 						</div>
@@ -172,9 +119,6 @@
 						$(".btn-delete").click(function() {
 							$("#deleteBackdrop #id").attr('value', $(this).data('id'));
 							$("#usernameDelete").html($(this).data('username'))
-						});
-						$(".btn-resend").click(function() {
-							$("#emailBackdrop #id").attr('value', $(this).data('id'));
 						});
 					});
 				</script>
